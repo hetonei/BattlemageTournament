@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/NewProjects-battlemage_main.iml" filepath="$PROJECT_DIR$/.idea/modules/NewProjects-battlemage_main.iml" group="battlemage" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/NewProjects-battlemage_test.iml" filepath="$PROJECT_DIR$/.idea/modules/NewProjects-battlemage_test.iml" group="battlemage" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/battlemage.iml" filepath="$PROJECT_DIR$/.idea/modules/battlemage.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/battlemage_main.iml" filepath="$PROJECT_DIR$/.idea/modules/battlemage_main.iml" group="battlemage" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/battlemage_test.iml" filepath="$PROJECT_DIR$/.idea/modules/battlemage_test.iml" group="battlemage" />
     </modules>
   </component>
 </project>
