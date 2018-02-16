@@ -1,4 +1,7 @@
 package bmt.game.spells.common.ultimates;
 
-public class Avendos {
+import bmt.game.spells.Spell;
+
+public class Avendos extends Spell {
+    
 }

@@ -1,4 +1,6 @@
 package bmt.game.spells.common.ultimates;
 
-public class Ontares {
+import bmt.game.spells.Spell;
+
+public class Ontares extends Spell {
 }

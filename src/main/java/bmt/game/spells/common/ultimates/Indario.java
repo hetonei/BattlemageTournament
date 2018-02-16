@@ -1,4 +1,6 @@
 package bmt.game.spells.common.ultimates;
 
-public class Indario {
+import bmt.game.spells.Spell;
+
+public class Indario extends Spell {
 }

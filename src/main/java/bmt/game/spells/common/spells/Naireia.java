@@ -1,4 +1,6 @@
 package bmt.game.spells.common.spells;
 
-public class Naireia {
+import bmt.game.spells.Spell;
+
+public class Naireia extends Spell {
 }

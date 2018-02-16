@@ -1,4 +1,6 @@
 package bmt.game.spells.common.ultimates;
 
-public class Omnicaidence {
+import bmt.game.spells.Spell;
+
+public class Omnicaidence extends Spell {
 }

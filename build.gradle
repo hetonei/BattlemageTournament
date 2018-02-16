@@ -18,7 +18,7 @@ dependencies {
 
 jar {
     baseName = 'BMT-bot'
-    version =  '0.1.0'
+    version =  '0.1.1'
     manifest {
         attributes(
                 'Main-Class' : 'bmt.StartClass')

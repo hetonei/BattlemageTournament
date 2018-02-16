@@ -1,4 +1,6 @@
 package bmt.game.spells.common.spells;
 
-public class Gratas {
+import bmt.game.spells.Spell;
+
+public class Gratas extends Spell {
 }

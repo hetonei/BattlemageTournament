@@ -6,8 +6,6 @@ import org.telegram.telegrambots.api.objects.Update;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.exceptions.TelegramApiException;
 
-import java.util.List;
-
 public class TgBot extends TelegramLongPollingBot{
 
     @Override
@@ -25,13 +23,8 @@ public class TgBot extends TelegramLongPollingBot{
     }
 
     @Override
-    public void onUpdatesReceived(List<Update> updates) {
-
-    }
-
-    @Override
     public String getBotUsername() {
-        return "testprofit";
+        return "testprofit_bot";
     }
 
     @Override

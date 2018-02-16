@@ -1,4 +1,6 @@
 package bmt.game.spells.common.spells;
 
-public class Gallatrix {
+import bmt.game.spells.Spell;
+
+public class Gallatrix extends Spell {
 }
