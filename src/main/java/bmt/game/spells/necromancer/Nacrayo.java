@@ -12,7 +12,7 @@ public class Nacrayo extends Spell {
         this.Name = "Nacrayo";
         this.Description = "Наносит противнику 8 урона.";
         this.Ultimate = true;
-        Effects = new ArrayList<Effect>();
+        Effects = new ArrayList<>();
     }
     @Override
     public void SimulateEffect(Player t1){

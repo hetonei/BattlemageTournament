@@ -12,7 +12,7 @@ public class Sacronica extends Spell {
         this.Name = "Sacronica";
         this.Description = "Восполняет 2 единицы здоровья и 3 на следующем ходу.";
         this.Ultimate = false;
-        Effects = new ArrayList<Effect>();
+        Effects = new ArrayList<>();
     }
     public void SimulateEffects(Player t1){
         SacronicaHealNormal(t1);

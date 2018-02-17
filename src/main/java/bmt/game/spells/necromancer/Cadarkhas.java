@@ -15,7 +15,7 @@ public class Cadarkhas extends Spell {
         "Наносит противнику 2 урона каждый ход на протяжении\n" +
         "3-х ходов, начиная с этого";
         this.Ultimate = false;
-        Effects = new ArrayList<Effect>();
+        Effects = new ArrayList<>();
     }
     @Override
     public void SimulateEffects(Player t1, Player t2){

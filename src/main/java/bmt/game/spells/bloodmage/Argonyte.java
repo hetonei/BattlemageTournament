@@ -12,7 +12,7 @@ public class Argonyte extends Spell {
         this.Name = "Argonyte";
         this.Description = "Весь полученный урон наносит урон врагу.";
         this.Ultimate = false;
-        Effects = new ArrayList<Effect>();
+        Effects = new ArrayList<>();
     }
     @Override
     public void SimulateEffects(Player t1, Player t2){

@@ -12,7 +12,7 @@ public class Bloodheart extends Spell {
         this.Name = "Bloodheart";
         this.Description = "Воспольняет здоровья в количестве урона нанесённого на прошлом ходу умноженного на 2";
         this.Ultimate = true;
-        Effects = new ArrayList<Effect>();
+        Effects = new ArrayList<>();
     }
     @Override
     public void SimulateEffect(Player t1){

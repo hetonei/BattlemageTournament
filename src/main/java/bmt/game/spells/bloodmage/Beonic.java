@@ -12,7 +12,7 @@ public class Beonic extends Spell {
         this.Name = "Beonic";
         this.Description = "Наносит 3 урона цели и восстанавливает вам 2 здоровья.";
         this.Ultimate = false;
-        Effects = new ArrayList<Effect>();
+        Effects = new ArrayList<>();
     }
     @Override
     public void SimulateEffects(Player t1, Player t2){
