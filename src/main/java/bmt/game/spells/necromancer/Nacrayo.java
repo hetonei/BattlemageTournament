@@ -8,24 +8,25 @@ import bmt.game.spells.EffectType;
 import java.util.ArrayList;
 
 public class Nacrayo extends Spell {
-    public Nacrayo(){
+    public Nacrayo (){
         this.Name = "Nacrayo";
         this.Description = "Наносит противнику 8 урона.";
         this.Ultimate = true;
         Effects = new ArrayList<>();
     }
+
     @Override
-    public void SimulateEffect(Player t1){
-        NacrayoDamageTarget(t1);
+    public void PerformEffect(boolean EnemyCaster){
+        NacrayoDamageTarget(EnemyCaster);
+        this.ReadyToUse = false;
     }
 
-    private void NacrayoDamageTarget(Player target){
+    private void NacrayoDamageTarget(boolean EnemyCaster){
         Effect effect = new Effect();
         effect.Priority = 4;
         effect.Type = EffectType.Damage;
-        effect.StepLength = 1;
-        effect.Target1 = target;
-        effect.Target1.HealthPoints = effect.Target1.HealthPoints - 8;
+        effect.Target = EnemyCaster ? this.Enemy : this.Caster;
+        effect.Value = 8;
         Effects.add(effect);
     }
 }

@@ -1,8 +1,7 @@
 package bmt.game.spells;
 
 public enum EffectType {
-    Evade,
-    Buff,
+    BonusDamage,
     Heal,
     Damage
 }

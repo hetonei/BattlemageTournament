@@ -6,7 +6,9 @@ import bmt.game.spells.Effect;
 import bmt.game.spells.Spell;
 import bmt.game.spells.common.spells.*;
 import bmt.game.spells.common.ultimates.*;
+import bmt.game.spells.necromancer.Cadarkhas;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Player {
@@ -14,36 +16,49 @@ public class Player {
     public Hero PlayersHero;
     public int HealthPoints;
 
+    public void setEnemy(Player enemy) {
+        Enemy = enemy;
+        AddTargets();
+    }
 
+    public Player Enemy;
+
+    public List<Spell> Spells;
+    public List<Spell> Ultimates;
 
     //for passive effects
     public void setHealthPoints(int healthPoints) {
         HealthPoints = healthPoints;
     }
     public List<Effect> PassiveEffects;
-
-
     public List<Effect> ContinuousEffects;
-    public List<Spell> Spells;
-    public List<Spell> Ultimates;
+
+    public Spell CastedSpell;
+
 
     public Player(Hero hero){
         this.PlayersHero = hero;
         this.HealthPoints = hero.Health;
+        this.Spells = new ArrayList<>();
         this.Spells = hero.Spells;
         //this.PassiveEffects = hero.Passives;
         this.Ultimates = hero.Ultimates;
-        //FillWithCommons();
+        FillWithCommons();
     }
-
-    public void CastSpell(Spell spell, Player target1){
-        spell.SimulateEffect(target1);
-        target1.HealthPoints = spell.Effects.get(0).Target1.HealthPoints;
+    private void AddTargets(){
+        for(Spell sp : Spells){
+            sp.Caster = this;
+            sp.Enemy = this.Enemy;
+        }
+        for(Spell sp : Ultimates){
+            sp.Caster = this;
+            sp.Enemy = this.Enemy;
+        }
     }
-    public void CastSpell(Spell spell, Player target1, Player target2){
-        spell.SimulateEffects(target1, target2);
+    public void CastSpell(Spell spell, boolean EnemyCaster){
+        spell.PerformEffect(EnemyCaster);
+        this.CastedSpell = spell;
     }
-
     private void FillWithCommons(){
         this.Spells.add(new Gallatrix());
         this.Spells.add(new Gratas());

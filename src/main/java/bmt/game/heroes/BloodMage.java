@@ -1,21 +1,17 @@
 package bmt.game.heroes;
 
-import bmt.game.spells.Spell;
-import bmt.game.spells.bloodmage.Argonyte;
-import bmt.game.spells.bloodmage.Beonic;
-import bmt.game.spells.bloodmage.Bloodheart;
-
 import java.util.ArrayList;
 
 public class BloodMage extends Hero{
     public BloodMage(){
         this.Name = "Маг Крови";
-        this.Description = "";
+        this.Description = "- Когда здоровье Мага Крови понижается до 5-ти и ниже, вражеские заклинания наносят магу крови максимум 1 урон.\n" +
+                "- Когда ХП 10 или выше - наносит дополнительно 1 урон атакующими заклинаниями.";
         this.Health = 20;
         Spells = new ArrayList<>();
         Ultimates = new ArrayList<>();
-        this.Spells.add(new Beonic());
+        /*this.Spells.add(new Beonic());
         this.Spells.add(new Argonyte());
-        this.Ultimates.add(new Bloodheart());
+        this.Ultimates.add(new Bloodheart());*/
     }
 }

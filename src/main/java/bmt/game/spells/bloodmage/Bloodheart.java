@@ -14,19 +14,4 @@ public class Bloodheart extends Spell {
         this.Ultimate = true;
         Effects = new ArrayList<>();
     }
-    @Override
-    public void SimulateEffect(Player t1){
-        BloodheartHealTarget(t1);
-        this.ReadyToUse = false;
-    }
-
-    private void BloodheartHealTarget(Player target){
-        Effect effect = new Effect();
-        effect.Priority = 3;
-        effect.Type = EffectType.Heal;
-        effect.StepLength = 1;
-        effect.Target1 = target;
-        //ACTION
-        Effects.add(effect);
-    }
 }

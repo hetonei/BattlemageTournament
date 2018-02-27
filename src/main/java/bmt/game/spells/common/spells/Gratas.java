@@ -8,24 +8,10 @@ import bmt.game.spells.Spell;
 import java.util.ArrayList;
 
 public class Gratas extends Spell {
-    public Gratas(){
+    public Gratas (){
         this.Name = "";
         this.Description = "";
         this.Ultimate = false;
         Effects = new ArrayList<>();
-    }
-    @Override
-    public void SimulateEffect(Player t1){
-        GallatrixDamageTarget(t1);
-        this.ReadyToUse = false;
-    }
-
-    private void GallatrixDamageTarget(Player target){
-        Effect effect = new Effect();
-        effect.Priority = 4;
-        effect.Type = EffectType.Damage;
-        effect.Target1 = target;
-        //ACTION
-        Effects.add(effect);
     }
 }
