@@ -1,18 +1,21 @@
 package bmt.game;
 
-import bmt.dal.models.User;
+import bmt.controllers.GameController;
+import bmt.game.components.Turn;
 import bmt.game.heroes.Hero;
 import bmt.game.spells.Effect;
 import bmt.game.spells.Spell;
 import bmt.game.spells.common.spells.*;
 import bmt.game.spells.common.ultimates.*;
-import bmt.game.spells.necromancer.Cadarkhas;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Player {
-    public User user;
+public class Player{
+    //public User user;
+    //public Turn CurTurn;
+
+
     public Hero PlayersHero;
     public int HealthPoints;
 
@@ -26,10 +29,7 @@ public class Player {
     public List<Spell> Spells;
     public List<Spell> Ultimates;
 
-    //for passive effects
-    public void setHealthPoints(int healthPoints) {
-        HealthPoints = healthPoints;
-    }
+
     public List<Effect> PassiveEffects;
     public List<Effect> ContinuousEffects;
 
@@ -41,9 +41,11 @@ public class Player {
         this.HealthPoints = hero.Health;
         this.Spells = new ArrayList<>();
         this.Spells = hero.Spells;
+
         //this.PassiveEffects = hero.Passives;
         this.Ultimates = hero.Ultimates;
         FillWithCommons();
+        GameController.Players.add(this);
     }
     private void AddTargets(){
         for(Spell sp : Spells){
@@ -55,10 +57,12 @@ public class Player {
             sp.Enemy = this.Enemy;
         }
     }
+
     public void CastSpell(Spell spell, boolean EnemyCaster){
         spell.PerformEffect(EnemyCaster);
         this.CastedSpell = spell;
     }
+
     private void FillWithCommons(){
         this.Spells.add(new Gallatrix());
         this.Spells.add(new Gratas());

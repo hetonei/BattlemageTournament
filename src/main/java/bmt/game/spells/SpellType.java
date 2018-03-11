@@ -6,5 +6,6 @@ public enum SpellType {
     ReflectDamage,
     CancelCont,
     CancelAllCont,
-    BonusDamage
+    BonusDamage,
+    Empty
 }

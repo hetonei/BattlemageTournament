@@ -5,10 +5,11 @@ import bmt.game.Player;
 import java.util.Comparator;
 
 public class Effect {
-    public int Priority;
     public EffectType Type;
     public Player Target;
     public int Value;
+
+    public int Priority;
     public int getPriority() {
         return Priority;
     }
