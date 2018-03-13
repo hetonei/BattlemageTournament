@@ -2,7 +2,7 @@ package bmt.game.heroes;
 
 import java.util.ArrayList;
 
-public class BloodMage extends Hero{
+public abstract class BloodMage extends Hero{
     public BloodMage(){
         this.Name = "Маг Крови";
         this.Description = "- Когда здоровье Мага Крови понижается до 5-ти и ниже, вражеские заклинания наносят магу крови максимум 1 урон.\n" +

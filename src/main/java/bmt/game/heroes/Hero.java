@@ -5,7 +5,7 @@ import bmt.game.spells.Spell;
 
 import java.util.List;
 
-public class Hero {
+public abstract class Hero {
     public String Name;
     public String Description;
     public int Health;

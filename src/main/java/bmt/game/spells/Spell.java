@@ -5,7 +5,7 @@ import bmt.game.Player;
 import java.util.Comparator;
 import java.util.List;
 
-public class Spell{
+public abstract class Spell{
 
     public String Name;
     public String Description;
@@ -16,16 +16,12 @@ public class Spell{
     public List<Effect> Effects;
     public Player Caster;
     public Player Enemy;
+    public boolean EnemyCaster;
 
-    public void PerformEffect(boolean EnemyCaster){};
+    public void PerformEffect(){};
 
     public int getPriority() {
         return Priority;
     }
-    public static Comparator<Spell> PriorityComparator = new Comparator<Spell>() {
-        @Override
-        public int compare(Spell o1, Spell o2) {
-            return o1.getPriority() - o2.getPriority();
-        }
-    };
+    public static Comparator<Spell> PriorityComparator = Comparator.comparingInt(Spell::getPriority);
 }

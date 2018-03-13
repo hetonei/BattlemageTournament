@@ -4,7 +4,6 @@ import bmt.game.Player;
 import bmt.game.spells.Effect;
 import bmt.game.spells.Spell;
 
-import java.awt.peer.ScrollbarPeer;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
@@ -12,64 +11,80 @@ import java.util.logging.Logger;
 public class SpellController {
 
     private static List<Effect> UsedEffects = new ArrayList<>();
-    public static List<Spell> UsedSpells = new ArrayList<>();
+    private static List<Spell> UsedSpells = new ArrayList<>();
 
     private static Logger log = Logger.getLogger(SpellController.class.getName());
 
-    public static void GetSpellEffects(){
-        for(Spell sp : UsedSpells){
-            UsedEffects.addAll(sp.Effects);
-        }
+    private static void ClearContiniousEffects(Spell spell){
+        spell.Caster.ContinuousEffects.stream()
+                .filter(e -> e.LifeSpan == 0)
+                .forEach(e -> e.Caster.ContinuousEffects.remove(e));
+        spell.Enemy.ContinuousEffects.stream()
+                .filter(e -> e.LifeSpan == 0)
+                .forEach(e -> e.Caster.ContinuousEffects.remove(e));
     }
 
-    public static void CastSpell(Player p){
-        UsedSpells.add(p.CastedSpell);
+    public static void CastSpell(Spell spell){
+        ClearContiniousEffects(spell);
+        UsedEffects.clear();
+        UsedSpells.clear();
+        GetContiniousEffects(spell.Caster, spell.Enemy);
+        UsedSpells.add(spell);
     }
 
     public static void UseAllSpells(){
         SortSpells();
-        //GetContiniousEffects();
-        GetSpellEffects();
+        UsedSpells.forEach(sp -> {
+            switch (sp.Type){
+                case Survive:
+                    UsedEffects.clear();
+                    break;
+                case Empty:
+                    sp.PerformEffect();
+                    UsedEffects.addAll(sp.Effects);
+                    break;
+            }
+        });
+        UseAllEffects();
+    }
+
+    private static void UseAllEffects(){
         SortEffects();
-        for(Effect ef : UsedEffects){
-            UseEffect(ef);
-        }
+        UsedEffects.stream()
+                .filter(e -> e.isUsable(e.UsableInitValue))
+                .forEach(SpellController::UseEffect);
+
+        UsedEffects.forEach(e -> e.LifeSpan-=1);
+        UsedEffects.stream()
+                .filter(e -> e.LifeSpan != 0)
+                .forEach(e -> e.Caster.ContinuousEffects.add(e));
     }
 
-    public static void GetContiniousEffects(Player player){
-        UsedEffects.addAll(player.ContinuousEffects);
-    }
-
-    public static void SortEffects(){
-        UsedEffects.sort(Effect.PriorityComparator);
-    }
-
-    public static void SortSpells(){
+    private static void SortSpells(){
         UsedSpells.sort(Spell.PriorityComparator);
     }
 
-    public static void UseEffect(Effect ef){
+    private static void GetContiniousEffects(Player p1, Player p2){
+        UsedEffects.addAll(p1.ContinuousEffects);
+        UsedEffects.addAll(p2.ContinuousEffects);
+    }
+
+    private static void SortEffects(){
+        UsedEffects.sort(Effect.PriorityComparator);
+    }
+
+    private static void UseEffect(Effect ef){
         log.info("Using effect with priority "+ ef.getPriority());
             switch (ef.Type){
                 case Heal:
-                    ef.Target.HealthPoints += ef.Value;
+                    ef.Target.Health += ef.Value;
                     break;
                 case Damage:
-                    ef.Target.HealthPoints -= ef.Value;
+                    ef.Target.Health -= ef.Value;
                     break;
                 default:
 
                     break;
             }
-    }
-
-    public static void UseSpell(){
-        for(Spell sp : UsedSpells){
-            switch (sp.Type){
-                default:
-
-                    break;
-            }
-        }
     }
 }

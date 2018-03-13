@@ -11,42 +11,27 @@ import bmt.game.spells.common.ultimates.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Player{
-    //public User user;
-    //public Turn CurTurn;
+public class Player extends Hero{
 
+    public Player Enemy;
+    public List<Effect> ContinuousEffects;
 
-    public Hero PlayersHero;
-    public int HealthPoints;
+    public Player(Hero hero){
+        this.Name = hero.Name;
+        this.Description = hero.Description;
+        this.Health = hero.Health;
+        this.Spells = hero.Spells;
+        //this.PassiveEffects = hero.Passives;
+        this.Ultimates = hero.Ultimates;
+        this.ContinuousEffects = new ArrayList<>();
+        FillWithCommons();
+    }
 
     public void setEnemy(Player enemy) {
         Enemy = enemy;
         AddTargets();
     }
 
-    public Player Enemy;
-
-    public List<Spell> Spells;
-    public List<Spell> Ultimates;
-
-
-    public List<Effect> PassiveEffects;
-    public List<Effect> ContinuousEffects;
-
-    public Spell CastedSpell;
-
-
-    public Player(Hero hero){
-        this.PlayersHero = hero;
-        this.HealthPoints = hero.Health;
-        this.Spells = new ArrayList<>();
-        this.Spells = hero.Spells;
-
-        //this.PassiveEffects = hero.Passives;
-        this.Ultimates = hero.Ultimates;
-        FillWithCommons();
-        GameController.Players.add(this);
-    }
     private void AddTargets(){
         for(Spell sp : Spells){
             sp.Caster = this;
@@ -56,11 +41,6 @@ public class Player{
             sp.Caster = this;
             sp.Enemy = this.Enemy;
         }
-    }
-
-    public void CastSpell(Spell spell, boolean EnemyCaster){
-        spell.PerformEffect(EnemyCaster);
-        this.CastedSpell = spell;
     }
 
     private void FillWithCommons(){

@@ -1,6 +1,7 @@
 package bmt.game.spells;
 
 public enum SpellType {
+    Survive,
     Immune,
     ReflectSpell,
     ReflectDamage,

@@ -10,6 +10,5 @@ public class Demonic extends Hero {
         this.Health = 13;
         Spells = new ArrayList<>();
         Ultimates = new ArrayList<>();
-
     }
 }

@@ -1,37 +1,44 @@
 package bmt;
 
-import bmt.controllers.GameController;
 import bmt.controllers.SpellController;
 import bmt.game.Player;
-import bmt.game.components.Game;
 import bmt.game.heroes.Necromancer;
+import bmt.game.spells.Spell;
+
+import java.io.IOException;
 
 public class StartClass {
-    public static void main(String[] args) {
-
+    public static void main(String[] args) throws IOException {
+        Test1();
     }
-    private static void Test1(){
-        //User1 выбирает героя
+    private static void Test1() throws IOException {
         Player p1 = new Player(new Necromancer());
-
-        //User2 выбирает героя
         Player p2 = new Player(new Necromancer());
+        p1.Name += "1";
+        p2.Name += "2";
+        p1.setEnemy(p2);
+        p2.setEnemy(p1);
+        ShowHP(p1, p2);
 
-        ///надо подождать, пока будет больше 1 игрока
+        Spell sp = p2.Spells.get(1);
+        sp.EnemyCaster = true;
+        SpellController.CastSpell(sp);
+        SpellController.UseAllSpells();
+        ShowHP(p1, p2);
 
-        //надо решить проблему, если сразу оба нажали
-        //например, сделать очередь для вызова стартгейма, если игра началась
-        //то удалить из списка игроков противника
-        Game game = GameController.StartGame(p1);
-
-        p1.CastSpell(p1.Ultimates.get(0), true);
-        p2.CastSpell(p2.Ultimates.get(0), false);
-
-
+        sp = p1.Ultimates.get(0);
+        sp.EnemyCaster = false;
+        SpellController.CastSpell(sp);
+        sp = p2.Ultimates.get(1);
+        sp.EnemyCaster = false;
+        SpellController.CastSpell(sp);
+        SpellController.UseAllSpells();
+        ShowHP(p1, p2);
     }
 
-    private static void Test2(){
-
+    private static void ShowHP(Player p1, Player p2){
+        System.out.println(p1.Name + " : " + p1.Health);
+        System.out.println(p2.Name + " : " + p2.Health);
     }
 
 }

@@ -9,6 +9,7 @@ mainClassName = "bmt.StartClass"
 
 repositories {
     mavenCentral()
+
 }
 
 dependencies {

@@ -14,26 +14,10 @@ public class Turn extends Component{
 
     @Override
     public void Start(){
-        /*while () {
-            try {
-                wait();
-            }
-            catch (InterruptedException e) {
-            }
-        }
-        //действие
-        notify();*/
-        SpellController.UseAllSpells();
-
+        //SpellController.UseAllSpells();
     }
 
-    public synchronized void WaitForCastSpell(Player p) throws InterruptedException{
-        while(SpellController.UsedSpells.size()<2){
-            wait();
-        }
-        SpellController.CastSpell(p);
-        System.out.println(p.PlayersHero.Name + " casted " + p.CastedSpell);
-    }
+
 
     @Override
     public void Add(Component c){
